@@ -1,0 +1,77 @@
+@startuml
+title baseNoStates.requests — Diagrama de clases
+
+package baseNoStates.requests {
+
+  interface Request {
+    + JSONObject answerToJson()
+    + String toString()
+    + void process()
+  }
+
+  class RequestArea implements Request {
+    - credential: String
+    - action: String
+    - areaId: String
+    - requestDateTime: java.time.LocalDateTime
+    - requests: java.util.ArrayList<RequestReader>
+    - authorized: boolean
+    --
+    + RequestArea(credential: String, action: String, dateTime: java.time.LocalDateTime, areaId: String)
+    + getAction(): String
+    + answerToJson(): org.json.JSONObject
+    + toString(): String
+    + process(): void
+  }
+
+  class RequestReader implements Request {
+    - credential: String
+    - action: String
+    - now: java.time.LocalDateTime
+    - doorId: String
+    - userName: String
+    - authorized: boolean
+    - reasons: java.util.ArrayList<String>
+    - doorStateName: String
+    - doorClosed: boolean
+    --
+    + RequestReader(credential: String, action: String, now: java.time.LocalDateTime, doorId: String)
+    + setDoorStateName(name: String): void
+    + getAction(): String
+    + isAuthorized(): boolean
+    + addReason(reason: String): void
+    + answerToJson(): org.json.JSONObject
+    + toString(): String
+    + process(): void
+  }
+
+  class RequestRefresh implements Request {
+    - jsonsDoors: java.util.ArrayList<org.json.JSONObject>
+    --
+    + answerToJson(): org.json.JSONObject
+    + toString(): String
+    + process(): void
+  }
+
+  ' Herencia (realización de la interfaz)
+  Request <|.. RequestArea
+  Request <|.. RequestReader
+  Request <|.. RequestRefresh
+
+  ' Composición: un RequestArea contiene muchos RequestReader
+  RequestArea "1" *-- "many" RequestReader : crea y agrega
+}
+
+' Notas opcionales sobre dependencias externas al paquete
+note right of RequestArea
+  Usa: Actions, Area, Space,
+  DirectoryAreas, DirectoryUserGroups,
+  Door, RequestReader
+end note
+
+note bottom of RequestReader
+  Usa: DirectoryDoors, Door, Area, Space
+  para autorización y estado de puerta
+end note
+
+@enduml

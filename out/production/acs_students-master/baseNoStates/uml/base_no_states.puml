@@ -1,0 +1,193 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+hide circle
+hide empty members
+
+package "baseNoStates" {
+
+  ' ====== Arranque ======
+  class Main {
+    + main(args:String[]) : void
+  }
+
+  class WebServer {
+    + WebServer()
+  }
+
+  Main ..> WebServer : new
+
+  ' ====== Acciones ======
+  class Actions {
+    {static} + OPEN : String
+    {static} + CLOSE : String
+    {static} + LOCK : String
+    {static} + UNLOCK : String
+    {static} + UNLOCK_SHORTLY : String
+    {static} + canonicalize(a:String) : String
+  }
+
+  ' ====== Áreas ======
+  abstract class Area {
+    - id : String
+    - description : String
+    - parent : Partition
+    + getId() : String
+    + getDescription() : String
+    + getParent() : Partition
+    + getDoorsGivingAccess() : java.util.ArrayList<Door>
+    + findAreaById(id:String) : Area
+    + getSpaces() : java.util.ArrayList<Space>
+  }
+
+  class Space extends Area {
+    - doorsGivingAccess : java.util.ArrayList<Door>
+    + Space(id:String, description:String, parent:Partition)
+    + addDoorGivingAccess(d:Door) : void
+    + getDoors() : java.util.ArrayList<Door>
+  }
+
+  class Partition extends Area {
+    - children : java.util.ArrayList<Area>
+    + Partition(id:String, description:String, parent:Partition)
+    + addChild(a:Area) : void
+  }
+
+  Area <|-- Space
+  Area <|-- Partition
+  Partition "1" o-- "0..*" Area : children
+
+
+  ' ====== Puertas y estados ======
+  interface DoorState {
+    + getName() : String
+    + open(r:baseNoStates.requests.RequestReader) : void
+    + close(r:baseNoStates.requests.RequestReader) : void
+    + lock(r:baseNoStates.requests.RequestReader) : void
+    + unlock(r:baseNoStates.requests.RequestReader) : void
+    + unlock_shortly(r:baseNoStates.requests.RequestReader) : void
+  }
+
+  class Door {
+    - id : String
+    - isClosed : boolean
+    - state : DoorState
+    - fromSpace : String
+    - toSpace : String
+    + Door(id:String)
+    + getId() : String
+    + isClosed() : boolean
+    + setFromSpace(id:String) : void
+    + setToSpace(id:String) : void
+    + getFromSpace() : String
+    + getToSpace() : String
+    + setState(s:DoorState) : void
+    + getState() : DoorState
+    + processRequest(r:baseNoStates.requests.RequestReader) : void
+  }
+
+  class DoorStateLocked implements DoorState
+  class DoorStateUnlocked implements DoorState
+  class DoorStatePropped implements DoorState
+  class DoorStateUnlockedShortly implements DoorState
+
+  Door *-- DoorState
+
+
+
+  abstract class Observable {
+    + addObserver(o:Observer) : void
+    + deleteObserver(o:Observer) : void
+    + setChanged() : void
+    + notifyObserver(arg:Object) : void
+  }
+
+  class Clock extends Observable {
+    - timer : java.util.Timer
+    - instance : Clock
+    + Clock()
+    + getInstance() : Clock
+    + startClock() : void
+  }
+
+  DoorStateUnlockedShortly ..|> Observer
+  Observable <|-- Clock
+  Clock ..> DoorStateUnlockedShortly : notifica (tick)\\nsuscripcion
+
+  note right of DoorStateUnlockedShortly
+    Observa el Clock (Observer).
+    En cada tick decide transición
+    desde "unlocked_shortly".
+  end note
+
+  ' ====== Directorios ======
+  class DirectoryDoors {
+    + makeDoors() : void
+    + findDoorById(id:String) : Door
+  }
+
+  class DirectoryAreas {
+    - rootArea : Partition
+    + makeAreas() : void
+    + findAreaById(id:String) : Area
+    + getRootArea() : Partition
+    - link(doorId:String, from:Space, to:Space) : void
+  }
+
+  DirectoryAreas ..> DirectoryDoors : findDoorById()
+  DirectoryAreas ..> Partition
+  DirectoryAreas ..> Space
+  DirectoryAreas ..> Door : link()
+
+  ' ====== Usuarios/Grupos/Horarios ======
+  class Schedule {
+    - startDate : java.time.LocalDate
+    - endDate   : java.time.LocalDate
+    - workDays  : java.util.ArrayList<java.time.DayOfWeek>
+    - startTime : java.time.LocalTime
+    - endTime   : java.time.LocalTime
+    + isWithinSchedule(dt:java.time.LocalDateTime) : boolean
+  }
+
+  class UserGroup {
+    - name : String
+    - actions : java.util.ArrayList<String>
+    - areas : java.util.ArrayList<Area>
+    - schedule : Schedule
+    - users : java.util.ArrayList<User>
+    + addUser(u:User) : void
+    + getUsers() : java.util.List<User>
+    + hasPermission(action:String) : boolean
+    + canBeInSpace(space:Space) : boolean
+    + isInWorkSchedule(dt:java.time.LocalDateTime) : boolean
+    + isActionAuthorized(action:String, space:Space, dt:java.time.LocalDateTime) : boolean
+  }
+
+  class User {
+    - name : String
+    - credential : String
+    - userGroup : UserGroup
+    + getCredential() : String
+    + getUserGroup() : UserGroup
+    + canDoAction(action:String, space:Space, dt:java.time.LocalDateTime) : boolean
+    + canBeInSpace(space:Space) : boolean
+    + canSendRequest(dt:java.time.LocalDateTime) : boolean
+  }
+
+  class DirectoryUserGroups {
+    + makeUserGroups() : void
+    + findUserByCredential(cred:String) : User
+    - addAreaIfExists(list:java.util.ArrayList<Area>, id:String) : void
+  }
+
+  UserGroup o-- Schedule
+  UserGroup o-- Area
+  UserGroup "1" o-- "0..*" User
+  User --> UserGroup
+  DirectoryUserGroups ..> UserGroup
+  DirectoryUserGroups ..> User
+  DirectoryUserGroups ..> DirectoryAreas : findAreaById()
+
+}
+
+@enduml
