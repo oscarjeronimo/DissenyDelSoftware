@@ -19,8 +19,8 @@ public class User {
 
     public String getCredential() {
         return credential;
-    }
-    
+    } 
+
     public boolean canDoAction(String action, Space space, LocalDateTime requestDateTime) {
         return userGroup.isActionAuthorized(action, space, requestDateTime);
     }
