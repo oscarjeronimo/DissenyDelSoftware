@@ -1,7 +1,10 @@
 package baseNoStates;
 
 import java.util.ArrayList;
-
+/*
+ * Represents a specific physical space (room, hall, corridor, etc.) in the building.
+ * It is the leaf in the composite pattern.
+ */
 public class Space extends Area {
     private final ArrayList<Door> doorsGivingAccess = new ArrayList<>();
 
@@ -15,11 +18,14 @@ public class Space extends Area {
 
     public ArrayList<Door> getDoors() { return new ArrayList<>(doorsGivingAccess); }
 
-    @Override
-    public ArrayList<Door> getDoorsGivingAccess() { return getDoors(); }
+    public ArrayList<Door> getDoorsGivingAccess() {
+        return getDoors();
+    }
 
     @Override
-    public Area findAreaById(String areaId) { return id.equals(areaId) ? this : null; }
+    public void accept(AreaVisitor v) {
+        v.visit(this);
+    }
 
     @Override
     public ArrayList<Space> getSpaces() {

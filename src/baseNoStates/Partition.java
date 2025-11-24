@@ -1,6 +1,9 @@
 package baseNoStates;
 
 import java.util.ArrayList;
+/* Represents a subdivision of the building that contains other areas
+ *  Implements Composite role in the composite pattern
+ */
 
 public class Partition extends Area {
     private final ArrayList<Area> children = new ArrayList<>();
@@ -11,21 +14,17 @@ public class Partition extends Area {
 
     public void addChild(Area a) { children.add(a); }
 
+    /**
+     * Accepts a visitor and propagates it to all children.
+     * This is the core of the Visitor pattern for the Composite structure.
+     */
     @Override
-    public ArrayList<Door> getDoorsGivingAccess() {
-        ArrayList<Door> res = new ArrayList<>();
-        for (Area c : children) res.addAll(c.getDoorsGivingAccess());
-        return res;
-    }
-
-    @Override
-    public Area findAreaById(String areaId) {
-        if (id.equals(areaId)) return this;
-        for (Area c : children) {
-            Area found = c.findAreaById(areaId);
-            if (found != null) return found;
+    public void accept(AreaVisitor v) {
+        v.visit(this);
+        // Una partición debe propagar la visita a sus hijos
+        for (Area child : children) {
+            child.accept(v);
         }
-        return null;
     }
 
     @Override

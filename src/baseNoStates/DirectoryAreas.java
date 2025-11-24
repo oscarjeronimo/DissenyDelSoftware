@@ -1,5 +1,7 @@
 package baseNoStates;
 
+//Registry class that manages all Area objects (Spaces and Partitions) in the system.
+
 public final class DirectoryAreas {
 
     private DirectoryAreas() {}
@@ -64,7 +66,15 @@ public final class DirectoryAreas {
 
     public static Area findAreaById(String id) {
         if (rootArea == null || id == null) return null;
-        return rootArea.findAreaById(id);
+
+        // Creamos el visitante configurado para buscar ese ID
+        FindAreaVisitor visitor = new FindAreaVisitor(id);
+
+        // Le decimos al árbol que acepte al visitante
+        rootArea.accept(visitor);
+
+        // Devolvemos lo que el visitante haya encontrado
+        return visitor.getFoundArea();
     }
 
     private static void link(String doorId, Space from, Space to) {

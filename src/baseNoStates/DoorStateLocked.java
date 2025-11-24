@@ -1,32 +1,42 @@
 package baseNoStates;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
- * State: Locked. Can't open until unlocked. Closing is allowed (idempotent).
+ * State: Locked. Can't open until unlocked. Closing is allowed.
  */
 public class DoorStateLocked extends DoorState {
+  private static final Logger logger = LoggerFactory.getLogger(DoorStateLocked.class);
   public DoorStateLocked(Door door) {
     super(door, "locked");
   }
 
   @Override
   public void open() {
-    // Can't open while locked
+    logger.warn("Cannot open door {} because it is locked", door.getId());
   }
 
   @Override
   public void close() {
     // Ensure physically closed
-    door.setClosed(true);
+    if (!door.isClosed()) {
+      door.setClosed(true);
+    }
+    else {
+      logger.debug("Door {} is already closed", door.getId());
+    }
   }
 
   @Override
   public void lock() {
-    // Already locked; nothing to do
+    logger.warn("Door {} is already locked", door.getId());
   }
 
   @Override
   public void unlock() {
     door.setState(new DoorStateUnlocked(door));
+    logger.info("Door {} is now unlocked", door.getId());
+
   }
 
   @Override

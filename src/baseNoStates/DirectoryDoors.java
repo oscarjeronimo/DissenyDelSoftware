@@ -3,6 +3,8 @@ package baseNoStates;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+//Registry class that maintains references to all Door objects in the system.
+
 public final class DirectoryDoors {
   private static ArrayList<Door> allDoors;
 

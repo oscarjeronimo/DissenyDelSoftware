@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+//Registry class for managing UserGroups and Users.
 
 public final class DirectoryUserGroups {
     private DirectoryUserGroups() {}
@@ -81,7 +82,7 @@ public final class DirectoryUserGroups {
         allDays.add(DayOfWeek.SATURDAY);
         allDays.add(DayOfWeek.SUNDAY);
         Schedule adminSchedule = new Schedule(adminStart, adminEnd, allDays,
-                LocalTime.of(0, 0), LocalTime.of(23, 59));
+            LocalTime.of(0, 0), LocalTime.of(23, 59));
 
         // Managers: 1 Sep any actual → 1 Mar any següent, dll–ds 8–20
         LocalDate managerStart = LocalDate.of(today.getYear(), 9, 1);
@@ -94,7 +95,7 @@ public final class DirectoryUserGroups {
         managerDays.add(DayOfWeek.FRIDAY);
         managerDays.add(DayOfWeek.SATURDAY);
         Schedule managerSchedule = new Schedule(managerStart, managerEnd, managerDays,
-                LocalTime.of(8, 0), LocalTime.of(20, 0));
+            LocalTime.of(8, 0), LocalTime.of(20, 0));
 
         // Employees: 1 Sep any actual → 1 Mar any següent, dll–dv 9–17
         LocalDate employeeStart = LocalDate.of(today.getYear(), 9, 1);
@@ -106,7 +107,7 @@ public final class DirectoryUserGroups {
         employeeDays.add(DayOfWeek.THURSDAY);
         employeeDays.add(DayOfWeek.FRIDAY);
         Schedule employeeSchedule = new Schedule(employeeStart, employeeEnd,
-                employeeDays, LocalTime.of(9, 0), LocalTime.of(17, 0));
+            employeeDays, LocalTime.of(9, 0), LocalTime.of(17, 0));
 
         // ===== Groups =====
         UserGroup adminGroup    = new UserGroup("Administrators", adminActions,    allAreas,     adminSchedule);
@@ -134,7 +135,7 @@ public final class DirectoryUserGroups {
         ArrayList<String> noActions = new ArrayList<>();
         ArrayList<Area> noAreas = new ArrayList<>();
         Schedule noSchedule = new Schedule(today, today.minusDays(1), new ArrayList<>(),
-                LocalTime.of(0, 0), LocalTime.of(0, 0));
+            LocalTime.of(0, 0), LocalTime.of(0, 0));
         UserGroup blankGroup = new UserGroup("Blank", noActions, noAreas, noSchedule);
         User bernat = new User("Bernat", "12345", blankGroup);
         User blai   = new User("Blai",   "77532", blankGroup);

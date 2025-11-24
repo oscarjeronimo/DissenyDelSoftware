@@ -2,6 +2,11 @@ package baseNoStates;
 
 import java.util.ArrayList;
 
+/**
+ * Abstract base class for the Composite Design Pattern representing building structures.
+ * It serves as the "Component" in the Composite pattern, where Space is the "Leaf"
+ * and Partition is the "Composite".
+ */
 public abstract class Area {
     protected final String id;
     protected final String description;
@@ -17,9 +22,7 @@ public abstract class Area {
     public String getDescription() { return description; }
     public Partition getParent() { return parent; }
 
-    public abstract ArrayList<Door> getDoorsGivingAccess();
-
-    public abstract Area findAreaById(String areaId);
+    public abstract void accept(AreaVisitor v);
 
     public abstract ArrayList<Space> getSpaces();
 

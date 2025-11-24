@@ -1,8 +1,17 @@
 package baseNoStates;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+/**
+ * Represents a physical door in the system.
+ * Acts as the "Context" in the State Design Pattern.
+ * Instead of managing the logic by itself, it delegates
+ * responsabilities to other DoorState objects.
+ */
 
 public class Door {
+  private static final Logger logger = LoggerFactory.getLogger(Door.class);
   private final String id;
   private boolean closed;
 
@@ -76,17 +85,20 @@ public class Door {
   }
 
   public void processRequest(baseNoStates.requests.RequestReader req) {
+    logger.debug("Processing request for door {}: {}", id, req);
     String canonical = Actions.canonicalize(req.getAction());
     if (canonical == null) {
+      logger.warn("Invalid action requested for door {}: {}", id, req.getAction()); // avisa
       req.addReason("Not allowed action");
       req.setDoorStateName(getStateName());
       return;
     }
     if (!req.isAuthorized()) {
+      logger.info("Request unauthorized for door {}: user {}", id, req.toString()); // INFO
       req.setDoorStateName(getStateName());
       return;
     }
-
+    logger.info("Door {}: Request authorized. Executing action '{}'", id, canonical);
     doAction(canonical);
     req.setDoorStateName(getStateName());
   }

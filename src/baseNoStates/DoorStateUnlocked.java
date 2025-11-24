@@ -1,34 +1,39 @@
 package baseNoStates;
 
-/** State: Unlocked. Allows opening/closing. Can lock only if door is physically closed. */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * State: Unlocked. Allows opening/closing. Can lock only if door is physically closed.
+ */
 public class DoorStateUnlocked extends DoorState {
+    private static final Logger logger = LoggerFactory.getLogger(DoorStateUnlocked.class);
+
     public DoorStateUnlocked(Door door) {
-        super(door, "unlocked");
+        super(door, Actions.UNLOCK); // "unlocked"
     }
 
     @Override
     public void open() {
-        // Unlocked -> allow opening (physically)
         door.setClosed(false);
     }
 
     @Override
     public void close() {
-        // Close physically
         door.setClosed(true);
     }
 
     @Override
     public void lock() {
-        // Policy: only lock if door is physically closed
         if (door.isClosed()) {
             door.setState(new DoorStateLocked(door));
+        } else {
+            logger.warn("Cannot lock door {} because it is open (must be closed first)", door.getId());
         }
-        // If it's open, do nothing
     }
 
     @Override
-    public void unlock() {
-        // Already unlocked; nothing to do
+    public void unlock(){
+        logger.warn("Door {} is already unlocked", door.getId());
     }
 }
