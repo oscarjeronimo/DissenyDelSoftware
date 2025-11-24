@@ -10,7 +10,7 @@ public class DoorStateUnlocked extends DoorState {
     private static final Logger logger = LoggerFactory.getLogger(DoorStateUnlocked.class);
 
     public DoorStateUnlocked(Door door) {
-        super(door, Actions.UNLOCK); // "unlocked"
+        super(door, "unlocked"); // "unlocked"
     }
 
     @Override

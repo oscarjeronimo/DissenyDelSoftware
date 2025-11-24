@@ -57,4 +57,9 @@ public class DoorStateUnlockedShortly extends DoorState implements Observer {
   public void unlock() {
     invalid("unlock");
   }
+
+  @Override
+  public void unlockShortly() {
+    logger.warn("Door {} is already in unlocked_shortly state", door.getId());
+  }
 }

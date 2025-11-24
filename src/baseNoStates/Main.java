@@ -7,9 +7,9 @@ public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
     public static void main(String[] args) {
         logger.info("System starting up...");
-        DirectoryDoors.makeDoors();
-        DirectoryAreas.makeAreas();
-        DirectoryUserGroups.makeUserGroups();
+        DirectoryDoors.getInstance().makeDoors();
+        DirectoryAreas.getInstance().makeAreas();
+        DirectoryUserGroups.getInstance().makeUserGroups();
         new WebServer();
     }
 }

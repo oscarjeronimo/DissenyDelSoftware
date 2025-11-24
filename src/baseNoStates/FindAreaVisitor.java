@@ -1,7 +1,7 @@
 package baseNoStates;
 
-// Implementation of the AreaVisitor interface to find an Area by its ID.
-// Areaclass manages structure while this visitor manages search logic
+// Visitor that searches for an Area by its ID.
+// Area handles the structure; this visitor handles the search logic.
 
 public class FindAreaVisitor implements AreaVisitor {
   private final String targetId;
@@ -14,7 +14,7 @@ public class FindAreaVisitor implements AreaVisitor {
 
   @Override
   public void visit(Space space) {
-    if (foundArea != null) return; // Pequeña optimización: si ya lo encontramos, no seguimos mirando
+    if (foundArea != null) return; // Stop if already found
 
     if (space.getId().equals(targetId)) {
       foundArea = space;
@@ -23,7 +23,7 @@ public class FindAreaVisitor implements AreaVisitor {
 
   @Override
   public void visit(Partition partition) {
-    if (foundArea != null) return; // Pequeña optimización
+    if (foundArea != null) return; // Stop if already found
 
     if (partition.getId().equals(targetId)) {
       foundArea = partition;

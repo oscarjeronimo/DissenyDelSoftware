@@ -64,8 +64,8 @@ public class RequestReader implements Request {
     }
 
     public void process() {
-        User user = DirectoryUserGroups.findUserByCredential(credential);
-        Door door = DirectoryDoors.findDoorById(doorId);
+        User user = DirectoryUserGroups.getInstance().findUserByCredential(credential);
+        Door door = DirectoryDoors.getInstance().findDoorById(doorId);
         assert door != null : "door " + doorId + " not found";
 
         authorize(user, door);      // sets authorized + reasons
@@ -87,8 +87,8 @@ public class RequestReader implements Request {
         String fromId = door.getFromSpace(); // String
         String toId   = door.getToSpace();   // String
 
-        Area fromArea = DirectoryAreas.findAreaById(fromId);
-        Area toArea   = DirectoryAreas.findAreaById(toId);
+        Area fromArea = DirectoryAreas.getInstance().findAreaById(fromId);
+        Area toArea   = DirectoryAreas.getInstance().findAreaById(toId);
 
         if (!(fromArea instanceof Space) || !(toArea instanceof Space)) {
             authorized = false;
