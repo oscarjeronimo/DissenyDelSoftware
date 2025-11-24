@@ -20,11 +20,7 @@ public class User {
     public String getCredential() {
         return credential;
     }
-
-    public UserGroup getUserGroup() {
-        return userGroup;
-    }
-
+    
     public boolean canDoAction(String action, Space space, LocalDateTime requestDateTime) {
         return userGroup.isActionAuthorized(action, space, requestDateTime);
     }
