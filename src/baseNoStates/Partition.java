@@ -12,20 +12,12 @@ public class Partition extends Area {
     public void addChild(Area a) { children.add(a); }
 
     @Override
-    public ArrayList<Door> getDoorsGivingAccess() {
-        ArrayList<Door> res = new ArrayList<>();
-        for (Area c : children) res.addAll(c.getDoorsGivingAccess());
-        return res;
-    }
-
-    @Override
-    public Area findAreaById(String areaId) {
-        if (id.equals(areaId)) return this;
-        for (Area c : children) {
-            Area found = c.findAreaById(areaId);
-            if (found != null) return found;
+    public void accept(AreaVisitor v) {
+        v.visit(this);
+        // Una partición debe propagar la visita a sus hijos
+        for (Area child : children) {
+            child.accept(v);
         }
-        return null;
     }
 
     @Override

@@ -17,9 +17,7 @@ public abstract class Area {
     public String getDescription() { return description; }
     public Partition getParent() { return parent; }
 
-    public abstract ArrayList<Door> getDoorsGivingAccess();
-
-    public abstract Area findAreaById(String areaId);
+    public abstract void accept(AreaVisitor v);
 
     public abstract ArrayList<Space> getSpaces();
 

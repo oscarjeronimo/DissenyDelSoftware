@@ -71,11 +71,10 @@ public class RequestArea implements Request {
             return;
         }
 
-        // Gather all doors whose to-space is in this area
-        ArrayList<Door> doorsInArea = new ArrayList<>();
-        for (Space space : area.getSpaces()) {
-            doorsInArea.addAll(space.getDoorsGivingAccess());
-        }
+        //FITA 2 usamos el nuevo visitor en vez de GetDoorsGivingAcces
+        GetDoorsVisitor visitor = new GetDoorsVisitor();
+        area.accept(visitor);
+        ArrayList<Door> doorsInArea = visitor.getDoors();
 
         if (doorsInArea.isEmpty()) {
             return; // nothing to do; remains authorized
