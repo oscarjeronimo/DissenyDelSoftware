@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>Logback Log Messages</title>
+<style  type="text/css">
+table { margin-left: 2em; margin-right: 2em; border-left: 2px solid #AAA; }
+TR.even { background: #FFFFFF; }
+TR.odd { background: #EAEAEA; }
+TR.warn TD.Level, TR.error TD.Level, TR.fatal TD.Level {font-weight: bold; color: #FF4040 }
+TD { padding-right: 1ex; padding-left: 1ex; border-right: 2px solid #AAA; }
+TD.Time, TD.Date { text-align: right; font-family: courier, monospace; font-size: smaller; }
+TD.Thread { text-align: left; }
+TD.Level { text-align: right; }
+TD.Logger { text-align: left; }
+TR.header { background: #596ED5; color: #FFF; font-weight: bold; font-size: larger; }
+TD.Exception { background: #A2AEE8; font-family: courier, monospace;}
+</style>
+
+  </head>
+<body>
+<hr/>
+<p>Log session start time Mon Nov 24 14:17:33 CET 2025</p><p></p>
+
+<table cellspacing="0">
+<tr class="header">
+<td class="RelativeTime">RelativeTime</td>
+<td class="Thread">Thread</td>
+<td class="MDC">MDC</td>
+<td class="Level">Level</td>
+<td class="Logger">Logger</td>
+<td class="Message">Message</td>
+</tr>
+
+
+<tr class="info even">
+<td class="RelativeTime">224</td>
+<td class="Thread">main</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.Main</td>
+<td class="Message">System starting up...</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">378</td>
+<td class="Thread">main</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Server started. Listening for connections on port: 8080</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">26981</td>
+<td class="Thread">Thread-0</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: refresh</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">26987</td>
+<td class="Thread">Thread-0</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request refresh RequestRefresh{[{&quot;fromSpace&quot;:&quot;exterior&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;parking&quot;,&quot;id&quot;:&quot;D1&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_basement&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;parking&quot;,&quot;id&quot;:&quot;D2&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;exterior&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;hall&quot;,&quot;id&quot;:&quot;D3&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_ground&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;hall&quot;,&quot;id&quot;:&quot;D4&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;hall&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room1&quot;,&quot;id&quot;:&quot;D5&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;hall&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room2&quot;,&quot;id&quot;:&quot;D6&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_floor1&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;corridor&quot;,&quot;id&quot;:&quot;D7&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;corridor&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room3&quot;,&quot;id&quot;:&quot;D8&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;corridor&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;IT&quot;,&quot;id&quot;:&quot;D9&quot;,&quot;state&quot;:&quot;unlock&quot;}]}</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">30676</td>
+<td class="Thread">Thread-1</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: refresh</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">30677</td>
+<td class="Thread">Thread-1</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request refresh RequestRefresh{[{&quot;fromSpace&quot;:&quot;exterior&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;parking&quot;,&quot;id&quot;:&quot;D1&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_basement&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;parking&quot;,&quot;id&quot;:&quot;D2&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;exterior&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;hall&quot;,&quot;id&quot;:&quot;D3&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_ground&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;hall&quot;,&quot;id&quot;:&quot;D4&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;hall&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room1&quot;,&quot;id&quot;:&quot;D5&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;hall&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room2&quot;,&quot;id&quot;:&quot;D6&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_floor1&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;corridor&quot;,&quot;id&quot;:&quot;D7&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;corridor&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room3&quot;,&quot;id&quot;:&quot;D8&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;corridor&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;IT&quot;,&quot;id&quot;:&quot;D9&quot;,&quot;state&quot;:&quot;unlock&quot;}]}</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">31234</td>
+<td class="Thread">Thread-2</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: refresh</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">31235</td>
+<td class="Thread">Thread-2</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request refresh RequestRefresh{[{&quot;fromSpace&quot;:&quot;exterior&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;parking&quot;,&quot;id&quot;:&quot;D1&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_basement&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;parking&quot;,&quot;id&quot;:&quot;D2&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;exterior&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;hall&quot;,&quot;id&quot;:&quot;D3&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_ground&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;hall&quot;,&quot;id&quot;:&quot;D4&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;hall&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room1&quot;,&quot;id&quot;:&quot;D5&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;hall&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room2&quot;,&quot;id&quot;:&quot;D6&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_floor1&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;corridor&quot;,&quot;id&quot;:&quot;D7&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;corridor&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room3&quot;,&quot;id&quot;:&quot;D8&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;corridor&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;IT&quot;,&quot;id&quot;:&quot;D9&quot;,&quot;state&quot;:&quot;unlock&quot;}]}</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">31401</td>
+<td class="Thread">Thread-3</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: refresh</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">31401</td>
+<td class="Thread">Thread-3</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request refresh RequestRefresh{[{&quot;fromSpace&quot;:&quot;exterior&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;parking&quot;,&quot;id&quot;:&quot;D1&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_basement&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;parking&quot;,&quot;id&quot;:&quot;D2&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;exterior&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;hall&quot;,&quot;id&quot;:&quot;D3&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_ground&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;hall&quot;,&quot;id&quot;:&quot;D4&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;hall&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room1&quot;,&quot;id&quot;:&quot;D5&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;hall&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room2&quot;,&quot;id&quot;:&quot;D6&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;stairs_floor1&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;corridor&quot;,&quot;id&quot;:&quot;D7&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;corridor&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;room3&quot;,&quot;id&quot;:&quot;D8&quot;,&quot;state&quot;:&quot;unlock&quot;}, {&quot;fromSpace&quot;:&quot;corridor&quot;,&quot;closed&quot;:true,&quot;toSpace&quot;:&quot;IT&quot;,&quot;id&quot;:&quot;D9&quot;,&quot;state&quot;:&quot;unlock&quot;}]}</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">35388</td>
+<td class="Thread">Thread-4</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: reader</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">35396</td>
+<td class="Thread">Thread-4</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.Door</td>
+<td class="Message">Door D1: Request authorized. Executing action &#39;unlock&#39;</td>
+</tr>
+
+<tr class="warn even">
+<td class="RelativeTime">35396</td>
+<td class="Thread">Thread-4</td>
+<td class="MDC"></td>
+<td class="Level">WARN</td>
+<td class="Logger">baseNoStates.DoorStateUnlocked</td>
+<td class="Message">Door D1 is already unlocked</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">35396</td>
+<td class="Thread">Thread-4</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request reader Request{credential=11343, userName=11343, action=unlock, now=2025-11-24T09:30, doorID=D1, closed=true, authorized=true, reasons=[]}</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">41723</td>
+<td class="Thread">Thread-5</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: reader</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">41724</td>
+<td class="Thread">Thread-5</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.Door</td>
+<td class="Message">Door D1: Request authorized. Executing action &#39;open&#39;</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">41724</td>
+<td class="Thread">Thread-5</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request reader Request{credential=11343, userName=11343, action=open, now=2025-11-24T09:30, doorID=D1, closed=false, authorized=true, reasons=[]}</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">48522</td>
+<td class="Thread">Thread-6</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: reader</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">48522</td>
+<td class="Thread">Thread-6</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.Door</td>
+<td class="Message">Door D1: Request authorized. Executing action &#39;lock&#39;</td>
+</tr>
+
+<tr class="warn odd">
+<td class="RelativeTime">48523</td>
+<td class="Thread">Thread-6</td>
+<td class="MDC"></td>
+<td class="Level">WARN</td>
+<td class="Logger">baseNoStates.DoorStateUnlocked</td>
+<td class="Message">Cannot lock door D1 because it is open (must be closed first)</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">48523</td>
+<td class="Thread">Thread-6</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request reader Request{credential=11343, userName=11343, action=lock, now=2025-11-24T09:30, doorID=D1, closed=false, authorized=true, reasons=[]}</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">50589</td>
+<td class="Thread">Thread-7</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: reader</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">50589</td>
+<td class="Thread">Thread-7</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.Door</td>
+<td class="Message">Door D1: Request authorized. Executing action &#39;lock&#39;</td>
+</tr>
+
+<tr class="warn odd">
+<td class="RelativeTime">50589</td>
+<td class="Thread">Thread-7</td>
+<td class="MDC"></td>
+<td class="Level">WARN</td>
+<td class="Logger">baseNoStates.DoorStateUnlocked</td>
+<td class="Message">Cannot lock door D1 because it is open (must be closed first)</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">50589</td>
+<td class="Thread">Thread-7</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request reader Request{credential=11343, userName=11343, action=lock, now=2025-11-24T09:30, doorID=D1, closed=false, authorized=true, reasons=[]}</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">52657</td>
+<td class="Thread">Thread-8</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: reader</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">52658</td>
+<td class="Thread">Thread-8</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.Door</td>
+<td class="Message">Door D1: Request authorized. Executing action &#39;lock&#39;</td>
+</tr>
+
+<tr class="warn odd">
+<td class="RelativeTime">52658</td>
+<td class="Thread">Thread-8</td>
+<td class="MDC"></td>
+<td class="Level">WARN</td>
+<td class="Logger">baseNoStates.DoorStateUnlocked</td>
+<td class="Message">Cannot lock door D1 because it is open (must be closed first)</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">52658</td>
+<td class="Thread">Thread-8</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request reader Request{credential=11343, userName=11343, action=lock, now=2025-11-24T09:30, doorID=D1, closed=false, authorized=true, reasons=[]}</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">56793</td>
+<td class="Thread">Thread-9</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: reader</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">56793</td>
+<td class="Thread">Thread-9</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.Door</td>
+<td class="Message">Door D1: Request authorized. Executing action &#39;close&#39;</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">56793</td>
+<td class="Thread">Thread-9</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request reader Request{credential=11343, userName=11343, action=close, now=2025-11-24T09:30, doorID=D1, closed=true, authorized=true, reasons=[]}</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">59699</td>
+<td class="Thread">Thread-10</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">Processing request type: reader</td>
+</tr>
+
+<tr class="info odd">
+<td class="RelativeTime">59699</td>
+<td class="Thread">Thread-10</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.Door</td>
+<td class="Message">Door D1: Request authorized. Executing action &#39;lock&#39;</td>
+</tr>
+
+<tr class="info even">
+<td class="RelativeTime">59710</td>
+<td class="Thread">Thread-10</td>
+<td class="MDC"></td>
+<td class="Level">INFO</td>
+<td class="Logger">baseNoStates.WebServer</td>
+<td class="Message">processed request reader Request{credential=11343, userName=11343, action=lock, now=2025-11-24T09:30, doorID=D1, closed=true, authorized=true, reasons=[]}</td>
+</tr>
