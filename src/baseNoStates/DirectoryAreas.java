@@ -120,9 +120,13 @@ public final class DirectoryAreas extends Observable {
    * Searches recursively through the entire area hierarchy.
    */
   public Area findAreaById(String id) {
-    if (rootArea == null || id == null) return null;
+    if (id == null) return null;
 
+    if (id.equals("ROOT")) {
+      return rootArea;
+    }
     // Use Visitor pattern to traverse the area tree
+    if (rootArea == null) return null;
     FindAreaVisitor visitor = new FindAreaVisitor(id);
     rootArea.accept(visitor);
     return visitor.getFoundArea();

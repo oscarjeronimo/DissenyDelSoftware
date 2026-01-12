@@ -105,11 +105,9 @@ public class Door {
 
   public JSONObject toJson() {
     JSONObject json = new JSONObject();
-    json.put("id", getId());
-    json.put("closed", isClosed());
+    json.put("id", id);
     json.put("state", getStateName());
-    json.put("fromSpace", getFromSpace());
-    json.put("toSpace", getToSpace());
+    json.put("closed", closed);
     return json;
   }
 
