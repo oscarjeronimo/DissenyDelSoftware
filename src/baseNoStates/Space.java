@@ -1,5 +1,7 @@
 package baseNoStates;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.util.ArrayList;
 /*
  * Represents a specific physical space (room, hall, corridor, etc.) in the building.
@@ -7,6 +9,18 @@ import java.util.ArrayList;
  */
 public class Space extends Area {
     private final ArrayList<Door> doorsGivingAccess = new ArrayList<>();
+
+    public JSONObject toJson(int depth) { // depth not used here
+        JSONObject json = new JSONObject();
+        json.put("class", "space");
+        json.put("id", id);
+        JSONArray jsonDoors = new JSONArray();
+        for (Door d : doorsGivingAccess) {
+            jsonDoors.put(d.toJson());
+        }
+        json.put("access_doors", jsonDoors);
+        return json;
+    }
 
     public Space(String id, String description, Partition parent) {
         super(id, description, parent);

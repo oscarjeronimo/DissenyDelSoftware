@@ -1,5 +1,6 @@
 package baseNoStates;
 
+import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
@@ -11,6 +12,7 @@ public abstract class Area {
     protected final String id;
     protected final String description;
     protected final Partition parent;
+    public abstract JSONObject toJson(int depth);
 
     protected Area(String id, String description, Partition parent) {
         this.id = id;
